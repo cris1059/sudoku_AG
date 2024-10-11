@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <script src="./node_modules/lodash.min.js"></script>
+    <title>ZUDOKU</title>
+</head>
+<body>
+    <div class="title">
+        <h1>SUDOKU</h1>
+    </div>
+<div class="program">
+    <div class="tablero">
+        <div id="fila_1" class="fila">
+            <input type="number" name="" id="casilla_01" class="shadow_top_left cuadro">
+            <input type="number" name="" id="casilla_02" class="cuadro">
+            <input type="number" name="" id="casilla_03" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_04" class="cuadro">
+            <input type="number" name="" id="casilla_05" class="cuadro">
+            <input type="number" name="" id="casilla_06" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_07" class="cuadro">
+            <input type="number" name="" id="casilla_08" class="cuadro">
+            <input type="number" name="" id="casilla_09" class="shadow_top_rigth cuadro">
+        </div>
+        <div id="fila_2" class="fila">
+            <input type="number" name="" id="casilla_11" class="cuadro">
+            <input type="number" name="" id="casilla_12" class="cuadro">
+            <input type="number" name="" id="casilla_13" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_14" class="cuadro">
+            <input type="number" name="" id="casilla_15" class="cuadro">
+            <input type="number" name="" id="casilla_16" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_17" class="cuadro">
+            <input type="number" name="" id="casilla_18" class="cuadro">
+            <input type="number" name="" id="casilla_19" class="cuadro">
+        </div>
+        <div id="fila_3" class="fila">
+            <input type="number" name="" id="casilla_21" class="linea_botton cuadro">
+            <input type="number" name="" id="casilla_22" class="linea_botton cuadro">
+            <input type="number" name="" id="casilla_23" class="linea_botton cuadro linea_rigth">
+            <input type="number" name="" id="casilla_24" class="linea_botton cuadro">
+            <input type="number" name="" id="casilla_25" class="linea_botton cuadro">
+            <input type="number" name="" id="casilla_26" class="linea_botton cuadro linea_rigth">
+            <input type="number" name="" id="casilla_27" class="linea_botton cuadro">
+            <input type="number" name="" id="casilla_28" class="linea_botton cuadro">
+            <input type="number" name="" id="casilla_29" class="linea_botton cuadro">
+        </div>
+        <div id="fila_4" class="fila">
+            <input type="number" name="" id="casilla_31" class="cuadro">
+            <input type="number" name="" id="casilla_32" class="cuadro">
+            <input type="number" name="" id="casilla_33" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_34" class="cuadro">
+            <input type="number" name="" id="casilla_35" class="cuadro">
+            <input type="number" name="" id="casilla_36" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_37" class="cuadro">
+            <input type="number" name="" id="casilla_38" class="cuadro">
+            <input type="number" name="" id="casilla_39" class="cuadro">
+        </div>
+        <div id="fila_5" class="fila">
+            <input type="number" name="" id="casilla_41" class="cuadro">
+            <input type="number" name="" id="casilla_42" class="cuadro">
+            <input type="number" name="" id="casilla_43" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_44" class="cuadro">
+            <input type="number" name="" id="casilla_45" class="cuadro">
+            <input type="number" name="" id="casilla_46" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_47" class="cuadro">
+            <input type="number" name="" id="casilla_48" class="cuadro">
+            <input type="number" name="" id="casilla_49" class="cuadro">
+        </div>
+        <div id="fila_6" class="fila">
+            <input type="number" name="" id="casilla_51" class="linea_botton cuadro">
+            <input type="number" name="" id="casilla_52" class="linea_botton cuadro">
+            <input type="number" name="" id="casilla_53" class="linea_botton cuadro linea_rigth">
+            <input type="number" name="" id="casilla_54" class="linea_botton cuadro">
+            <input type="number" name="" id="casilla_55" class="linea_botton cuadro">
+            <input type="number" name="" id="casilla_56" class="linea_botton cuadro linea_rigth">
+            <input type="number" name="" id="casilla_57" class="linea_botton cuadro">
+            <input type="number" name="" id="casilla_58" class="linea_botton cuadro">
+            <input type="number" name="" id="casilla_59" class="linea_botton cuadro">
+        </div>
+        <div id="fila_7" class="fila">
+            <input type="number" name="" id="casilla_61" class="cuadro">
+            <input type="number" name="" id="casilla_62" class="cuadro">
+            <input type="number" name="" id="casilla_63" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_64" class="cuadro">
+            <input type="number" name="" id="casilla_65" class="cuadro">
+            <input type="number" name="" id="casilla_66" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_67" class="cuadro">
+            <input type="number" name="" id="casilla_68" class="cuadro">
+            <input type="number" name="" id="casilla_69" class="cuadro">
+        </div>
+        <div id="fila_8" class="fila">
+            <input type="number" name="" id="casilla_71" class="cuadro">
+            <input type="number" name="" id="casilla_72" class="cuadro">
+            <input type="number" name="" id="casilla_73" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_74" class="cuadro">
+            <input type="number" name="" id="casilla_75" class="cuadro">
+            <input type="number" name="" id="casilla_76" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_77" class="cuadro">
+            <input type="number" name="" id="casilla_78" class="cuadro">
+            <input type="number" name="" id="casilla_79" class="cuadro">
+        </div>
+        <div id="fila_9" class="fila">
+            <input type="number" name="" id="casilla_81" class="shadow_bottom_left cuadro">
+            <input type="number" name="" id="casilla_82" class="cuadro">
+            <input type="number" name="" id="casilla_83" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_84" class="cuadro">
+            <input type="number" name="" id="casilla_85" class="cuadro">
+            <input type="number" name="" id="casilla_86" class="cuadro linea_rigth">
+            <input type="number" name="" id="casilla_87" class="cuadro">
+            <input type="number" name="" id="casilla_88" class="cuadro">
+            <input type="number" name="" id="casilla_89" class="shadow_botton_rigth cuadro">
+        </div>
+    </div>
+
+    <button class="centrar load solucion" id="solucion">SOLUCION</button>
+
+</div>
+
+<div id="scream" class="scream">
+    <div class="modal">
+        <h2>SUDOKU | SOLUCIONES CON AG</h2>
+        <div class="flex-rigth">
+            <button id="generar">Generar Tablero</button>
+            <button id="buscar_solucion">Buscar solucion</button>
+        </div>
+    </div>
+</div>
+
+    <script src="./src/BD/bd_tableros.js"></script>
+    <script src="./src/js/script.js"></script>
+
+</body>
+</html>
