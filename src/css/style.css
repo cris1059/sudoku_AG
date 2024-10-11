@@ -121,3 +121,31 @@ button:hover{
 .load{
     display: none;
 }
+
+
+@media (max-width: 768px) {
+    body {
+        display: none; 
+    }
+}
+
+
+@media (max-width: 768px) {
+    a, button {
+        pointer-events: none; 
+        color: gray; 
+        text-decoration: none; 
+    }
+}
+
+
+@media (max-width: 768px) {
+    body {
+        font-size: 30px; 
+    }
+    
+    .container {
+        width: 2000px;
+        overflow: auto; 
+    }
+}

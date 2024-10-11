@@ -23,7 +23,8 @@ function generar() {
 }
 
 function buscar_solucion() {
-    closeModal('scream');
+    alert("oh no\nAun no funciona esta opcion));");
+    //closeModal('scream');
 }
 
 
@@ -72,7 +73,7 @@ async function solucionar(){
         alert(mensaje);
     }).catch((error)=>{
         console.log(error);
-        alert(mensaje)
+        alert(error)
     }).finally(()=>{
         closeModal('screamloader');
         closeModal('clear');
