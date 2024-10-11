@@ -6,12 +6,13 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 let sudokuInicial = [], contador = 0;
 
-const tamañoPoblacion = 100, maxGeneraciones = 1000;
+const tamañoPoblacion = 100, maxGeneraciones = 5000;
 function listener(event) {
     
     if(event.target && event.target.id == 'generar') generar();
     if(event.target && event.target.id == 'buscar_solucion') buscar_solucion();
     if (event.target && event.target.id == 'solucion') solucionar();
+    if(event.target && event.target.id == 'clear') location.reload();
     
 }
 
@@ -27,10 +28,17 @@ function buscar_solucion() {
 
 
 function closeModal(clase) {
-    console.log(clase);
-    let modal = document.querySelector('.'+clase);
-    modal.classList.toggle('load');
+    return new Promise((resolve) => {
+        console.log(clase);
+        let modal = document.querySelector('.'+clase);
+        modal.classList.toggle('load');
+
+        setTimeout(() => {
+            resolve();  
+        }, 1);  
+    });
 }
+
 
 function llenar_tablero(){
     let nT = tb_BD.length;
@@ -48,19 +56,27 @@ function llenar_tablero(){
 
 }
 
-function solucionar(){
+async function solucionar(){
+    
+    await closeModal('screamloader');
 
     const resuelto = new Promise((resolve, reject) => {
         let estado = algoritmoGenetico(sudokuInicial);
 
-        if(estado) resolve("Se encontro solucion");
-        else reject("No se encontro solucion");
+        if(estado) resolve("Se encontro solucion en una generacion!!");
+        else reject("No se encontro solucion en el numero de generaciones permitido");
     });
-
+    
     resuelto.then((mensaje) => {
         console.log(mensaje);
+        alert(mensaje);
     }).catch((error)=>{
         console.log(error);
+        alert(mensaje)
+    }).finally(()=>{
+        closeModal('screamloader');
+        closeModal('clear');
+        closeModal('solucion');
     })
 }
 
@@ -152,8 +168,12 @@ function algoritmoGenetico(sudokuInicial) {
         mejorFitness = calcularFitness(mejorIndividuo);
     }
 
+    
+
     if (mejorFitness === 162) {
         console.log("¡Solución encontrada en la generación", generacion, "!");
+        tablero = mejorIndividuo;
+        cambio(tablero);
         imprimirSudoku(mejorIndividuo);
         return true;
     }
@@ -172,11 +192,14 @@ function algoritmoGenetico(sudokuInicial) {
     }
 
     poblacion = nuevaPoblacion;
+
     console.log(contador++);
 }
 
     console.log("No se encontró solución en el número de generaciones permitido.");
     imprimirSudoku(mejorIndividuo);
+    tablero = mejorIndividuo;
+    cambio(tablero);
     return false;
 }
 
@@ -185,4 +208,21 @@ function imprimirSudoku(sudoku) {
         console.log(fila.join(' '));
     });
 }
+
+function cambio(tablero){
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            for (let i = 0; i < tablero.length; i++) {
+                for (let j = 0; j < tablero.length; j++) {
+                    if(tablero[i][j] != 0){
+                        let casilla = document.getElementById(`casilla_${i}${(j+1)}`);
+                        casilla.value = tablero[i][j];
+                    }
+                }   
+            }
+        }, 500);
+    })
+}
+
+
 

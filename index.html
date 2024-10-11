@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="./src/css/style_carga.css">
     <link rel="stylesheet" href="./src/css/style.css">
+    <!--<link rel="stylesheet" href="./node_modules/bootstrap.min.css">
+    <script src="./node_modules/bootstrap.bundle.min.js"></script>-->
     <script src="./node_modules/lodash.min.js"></script>
     <title>ZUDOKU</title>
 </head>
@@ -115,11 +119,12 @@
     </div>
 
     <button class="centrar load solucion" id="solucion">SOLUCION</button>
+    <button class="centrar load clear" id="clear">CLEAR</button>
 
 </div>
 
 <div id="scream" class="scream">
-    <div class="modal">
+    <div class="modalpro">
         <h2>SUDOKU | SOLUCIONES CON AG</h2>
         <div class="flex-rigth">
             <button id="generar">Generar Tablero</button>
@@ -127,6 +132,16 @@
         </div>
     </div>
 </div>
+    <div id="pantalla-de-carga" class="screamloader load">
+        <div class="loaderscroll">
+            <h4>PROCESANDO ALGORITMO GENETICO PARA SU SOLUCION</h4>
+            <div class="spinner">
+                <span class="loader"></span>  
+            </div>
+            
+        </div>
+        
+    </div>
 
     <script src="./src/BD/bd_tableros.js"></script>
     <script src="./src/js/script.js"></script>
