@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () =>{
     const body = document.querySelector('body');
     body.addEventListener('click', listener);
@@ -121,6 +120,20 @@ function calcularFitness(individuo) {
     return fitness;
 }
 
+function seleccionPorRuleta(poblacion) {
+    const totalFitness = poblacion.reduce((sum, individuo) => sum + calcularFitness(individuo), 0);
+    let seleccion = Math.random() * totalFitness;
+    let suma = 0;
+
+    for (let individuo of poblacion) {
+        suma += calcularFitness(individuo);
+        if (suma >= seleccion) {
+            return individuo;
+        }
+    }
+}   
+
+
 function seleccionPorTorneo(poblacion) {
     const torneo = _.sampleSize(poblacion, 3);
     torneo.sort((a, b) => calcularFitness(b) - calcularFitness(a));
@@ -139,6 +152,33 @@ function cruce(individuo1, individuo2) {
 
     return [hijo1, hijo2];
 }
+
+function cruceDeDosPuntos(individuo1, individuo2) {
+    const hijo1 = _.cloneDeep(individuo1);
+    const hijo2 = _.cloneDeep(individuo2);
+
+    let puntoDeCruce1 = Math.floor(Math.random() * 9);
+    let puntoDeCruce2 = Math.floor(Math.random() * 9); 
+
+    if (puntoDeCruce1 > puntoDeCruce2) {
+        [puntoDeCruce1, puntoDeCruce2] = [puntoDeCruce2, puntoDeCruce1];
+    }
+
+    for (let i = puntoDeCruce1; i < puntoDeCruce2; i++) {
+        [hijo1[i], hijo2[i]] = [hijo2[i], hijo1[i]];
+    }
+
+    return [hijo1, hijo2];
+}
+
+function mutacionCombinada(individuo) {
+    if (Math.random() < 0.5) {
+        return mutacion(individuo);
+    } else {
+        return mutacionPorInversion(individuo);
+    }
+}
+
 
 function mutacion(individuo) {
     const fila = Math.floor(Math.random() * 9);
